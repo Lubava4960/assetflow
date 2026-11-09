@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-remove-default-useful-life
+      author: Lubava4960
+
+      changes:
+        - dropColumn:
+            tableName: asset_categories
+            columnName: default_useful_life_months
