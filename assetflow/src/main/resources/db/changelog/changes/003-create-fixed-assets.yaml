@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-fixed-assets
+      author: Lubava4960
+
+      changes:
+        - createTable:
+            tableName: fixed_assets
+            columns:
+
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: inventory_number
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: category_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: okof_code
+                  type: VARCHAR(20)
+
+              - column:
+                  name: tax_depreciation_group
+                  type: INTEGER
+
+              - column:
+                  name: initial_cost
+                  type: DECIMAL(19, 2)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: acquisition_date
+                  type: DATE
+
+              - column:
+                  name: commissioning_date
+                  type: DATE
+
+              - column:
+                  name: accounting_useful_life_months
+                  type: INTEGER
+
+              - column:
+                  name: tax_useful_life_months
+                  type: INTEGER
+
+              # Встроенный AssetTechnicalInfo
+              - column:
+                  name: manufacturer
+                  type: VARCHAR(255)
+
+              - column:
+                  name: model
+                  type: VARCHAR(255)
+
+              - column:
+                  name: serial_number
+                  type: VARCHAR(255)
+
+              - column:
+                  name: passport_number
+                  type: VARCHAR(255)
+
+              - column:
+                  name: passport_date
+                  type: DATE
+
+              - column:
+                  name: technical_description
+                  type: VARCHAR(255)
+
+        - addForeignKeyConstraint:
+            baseTableName: fixed_assets
+            baseColumnNames: category_id
+            referencedTableName: asset_categories
+            referencedColumnNames: id
+            constraintName: fk_fixed_assets_category

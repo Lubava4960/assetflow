@@ -27,7 +27,6 @@ public class AssetCategory {
     @Column(length = 500)
     private String description;
 
-    private Integer defaultUsefulLifeMonths;
 
     @Column(nullable = false)
     private boolean active = true;
@@ -39,6 +38,15 @@ public class AssetCategory {
         this.code = code;
         this.name = name;
         this.description = description;
-        this.defaultUsefulLifeMonths = defaultUsefulLifeMonths;
+
+    }
+    public void updateDetails(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    // Деактивация категории
+    public void deactivate() {
+        this.active = false;
     }
 }

@@ -15,9 +15,6 @@ public class AssetCategoryMapper {
                 .code(request.getCode())
                 .name(request.getName())
                 .description(request.getDescription())
-                .defaultUsefulLifeMonths(
-                        request.getDefaultUsefulLifeMonths()
-                )
                 .build();
 
     }
@@ -30,9 +27,6 @@ public class AssetCategoryMapper {
                 .code(category.getCode())
                 .name(category.getName())
                 .description(category.getDescription())
-                .defaultUsefulLifeMonths(
-                        category.getDefaultUsefulLifeMonths()
-                )
                 .active(category.isActive())
                 .build();
     }

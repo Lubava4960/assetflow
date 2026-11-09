@@ -1,17 +1,14 @@
 package ru.assetflow.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class AssetCategoryRequest {
     @NotBlank
     @Size(max = 30)
@@ -24,8 +21,7 @@ public class AssetCategoryRequest {
     @Size(max = 500)
     String description;
 
-    @Positive
-    Integer defaultUsefulLifeMonths;
+
 
 
     }
