@@ -1,8 +1,8 @@
-package ru.assetflow.service;
+package ru.assetflow.service.AssetCategory;
 
-import ru.assetflow.dto.AssetCategoryRequest;
-import ru.assetflow.dto.AssetCategoryResponse;
-import ru.assetflow.dto.AssetCategoryUpdateRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryResponse;
+import ru.assetflow.dto.assetCategory.AssetCategoryUpdateRequest;
 
 import java.util.List;
 

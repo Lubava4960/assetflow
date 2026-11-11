@@ -16,10 +16,10 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.confirmdialog.ConfirmDialog;
 
 
-import ru.assetflow.dto.AssetCategoryRequest;
-import ru.assetflow.dto.AssetCategoryResponse;
-import ru.assetflow.dto.AssetCategoryUpdateRequest;
-import ru.assetflow.service.AssetCategoryService;
+import ru.assetflow.dto.assetCategory.AssetCategoryRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryResponse;
+import ru.assetflow.dto.assetCategory.AssetCategoryUpdateRequest;
+import ru.assetflow.service.AssetCategory.AssetCategoryService;
 
 import java.util.NoSuchElementException;
 

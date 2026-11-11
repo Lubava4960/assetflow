@@ -1,4 +1,4 @@
-package ru.assetflow.dto;
+package ru.assetflow.dto.assetCategory;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

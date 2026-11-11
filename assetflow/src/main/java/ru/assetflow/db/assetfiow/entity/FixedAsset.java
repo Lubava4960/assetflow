@@ -62,7 +62,8 @@ public class FixedAsset {
             LocalDate acquisitionDate,
             LocalDate commissioningDate,
             Integer accountingUsefulLifeMonths,
-            Integer taxUsefulLifeMonths
+            Integer taxUsefulLifeMonths,
+            AssetTechnicalInfo technicalInfo
     ) {
         this.inventoryNumber = inventoryNumber;
         this.name = name;
@@ -74,6 +75,7 @@ public class FixedAsset {
         this.commissioningDate = commissioningDate;
         this.accountingUsefulLifeMonths = accountingUsefulLifeMonths;
         this.taxUsefulLifeMonths = taxUsefulLifeMonths;
+        this.technicalInfo = technicalInfo;
     }
 }
 
