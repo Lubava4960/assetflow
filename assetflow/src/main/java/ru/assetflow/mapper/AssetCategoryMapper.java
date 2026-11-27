@@ -2,8 +2,8 @@ package ru.assetflow.mapper;
 
 import org.springframework.stereotype.Component;
 import ru.assetflow.db.assetfiow.entity.AssetCategory;
-import ru.assetflow.dto.AssetCategoryRequest;
-import ru.assetflow.dto.AssetCategoryResponse;
+import ru.assetflow.dto.assetCategory.AssetCategoryRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryResponse;
 
 
 @Component

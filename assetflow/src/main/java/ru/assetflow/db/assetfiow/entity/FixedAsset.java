@@ -62,7 +62,8 @@ public class FixedAsset {
             LocalDate acquisitionDate,
             LocalDate commissioningDate,
             Integer accountingUsefulLifeMonths,
-            Integer taxUsefulLifeMonths
+            Integer taxUsefulLifeMonths,
+            AssetTechnicalInfo technicalInfo
     ) {
         this.inventoryNumber = inventoryNumber;
         this.name = name;
@@ -74,6 +75,30 @@ public class FixedAsset {
         this.commissioningDate = commissioningDate;
         this.accountingUsefulLifeMonths = accountingUsefulLifeMonths;
         this.taxUsefulLifeMonths = taxUsefulLifeMonths;
+        this.technicalInfo = technicalInfo;
+    }
+    public void updateDetails(
+            String name,
+            AssetCategory category,
+            String okofCode,
+            Integer taxDepreciationGroup,
+            BigDecimal initialCost,
+            LocalDate acquisitionDate,
+            LocalDate commissioningDate,
+            Integer accountingUsefulLifeMonths,
+            Integer taxUsefulLifeMonths,
+            AssetTechnicalInfo technicalInfo
+    ) {
+        this.name = name;
+        this.category = category;
+        this.okofCode = okofCode;
+        this.taxDepreciationGroup = taxDepreciationGroup;
+        this.initialCost = initialCost;
+        this.acquisitionDate = acquisitionDate;
+        this.commissioningDate = commissioningDate;
+        this.accountingUsefulLifeMonths = accountingUsefulLifeMonths;
+        this.taxUsefulLifeMonths = taxUsefulLifeMonths;
+        this.technicalInfo = technicalInfo;
     }
 }
 

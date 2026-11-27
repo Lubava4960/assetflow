@@ -1,12 +1,12 @@
-package ru.assetflow.service;
+package ru.assetflow.service.AssetCategory;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.assetflow.db.assetfiow.entity.AssetCategory;
-import ru.assetflow.dto.AssetCategoryRequest;
-import ru.assetflow.dto.AssetCategoryResponse;
-import ru.assetflow.dto.AssetCategoryUpdateRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryRequest;
+import ru.assetflow.dto.assetCategory.AssetCategoryResponse;
+import ru.assetflow.dto.assetCategory.AssetCategoryUpdateRequest;
 import ru.assetflow.mapper.AssetCategoryMapper;
 import ru.assetflow.repository.AssetCategoryRepository;
 
