@@ -1,7 +1,7 @@
 package ru.assetflow.service.fixedAsset;
 
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.kotlin.com.intellij.openapi.components.Service;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.assetflow.db.assetfiow.entity.AssetCategory;
 import ru.assetflow.db.assetfiow.entity.FixedAsset;
@@ -41,9 +41,9 @@ public class FixedAssetServiceImpl implements FixedAssetService {
     @Transactional
     @Override
     public FixedAssetResponse create(FixedAssetRequest request) {
-
-        if (fixedAssetRepository.existsByInventoryNumber(
-                request.getInventoryNumber())) {
+        String inventoryNumber = request.getInventoryNumber().trim();
+        request.setInventoryNumber(inventoryNumber);
+        if (fixedAssetRepository.existsByInventoryNumber(inventoryNumber)) {
             throw new IllegalArgumentException(
                     "Такой инвентарный номер уже существует"
             );
@@ -60,5 +60,19 @@ public class FixedAssetServiceImpl implements FixedAssetService {
         FixedAsset savedAsset = fixedAssetRepository.save(fixedAsset);
 
         return mapper.toResponse(savedAsset);
+    }
+    @Transactional
+    @Override
+    public FixedAssetResponse update(Long id, FixedAssetRequest request) {
+        FixedAsset fixedAsset = fixedAssetRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException(
+                        "Основное средство не найдено: " + id
+                ));
+        AssetCategory category = categoryRepository.findById(request.getCategoryId())
+                .orElseThrow(() -> new NoSuchElementException(
+                        "Категория не найдена: " + request.getCategoryId()
+                ));
+        mapper.updateEntity(fixedAsset, request, category);
+        return mapper.toResponse(fixedAsset);
     }
 }

@@ -3,6 +3,7 @@ package ru.assetflow.mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.assetflow.db.assetfiow.entity.AssetCategory;
+import ru.assetflow.db.assetfiow.entity.AssetTechnicalInfo;
 import ru.assetflow.db.assetfiow.entity.FixedAsset;
 import ru.assetflow.dto.fixedAsset.FixedAssetRequest;
 import ru.assetflow.dto.fixedAsset.FixedAssetResponse;
@@ -12,6 +13,7 @@ import ru.assetflow.dto.fixedAsset.FixedAssetResponse;
 @RequiredArgsConstructor
 public class FixedAssetMapper {
     private final AssetTechnicalInfoMapper technicalInfoMapper;
+
     public FixedAsset toEntity(FixedAssetRequest request, AssetCategory category) {
         return FixedAsset.builder()
                 .inventoryNumber(request.getInventoryNumber())
@@ -32,7 +34,28 @@ public class FixedAssetMapper {
                         technicalInfoMapper.toEntity(request.getTechnicalInfo())
                 )
                 .build();
+    }
 
+    public void updateEntity(
+            FixedAsset fixedAsset,
+            FixedAssetRequest request,
+            AssetCategory category
+    ) {
+        AssetTechnicalInfo technicalInfo =
+                technicalInfoMapper.toEntity(request.getTechnicalInfo());
+
+        fixedAsset.updateDetails(
+                request.getName(),
+                category,
+                request.getOkofCode(),
+                request.getTaxDepreciationGroup(),
+                request.getInitialCost(),
+                request.getAcquisitionDate(),
+                request.getCommissioningDate(),
+                request.getAccountingUsefulLifeMonths(),
+                request.getTaxUsefulLifeMonths(),
+                technicalInfo
+        );
     }
     public FixedAssetResponse toResponse(FixedAsset fixedAsset) {
         return FixedAssetResponse.builder()
@@ -46,6 +69,7 @@ public class FixedAssetMapper {
                 .taxDepreciationGroup(fixedAsset.getTaxDepreciationGroup())
                 .initialCost(fixedAsset.getInitialCost())
                 .acquisitionDate(fixedAsset.getAcquisitionDate())
+                .commissioningDate(fixedAsset.getCommissioningDate())
                 .accountingUsefulLifeMonths(fixedAsset.getAccountingUsefulLifeMonths())
                 .taxUsefulLifeMonths(fixedAsset.getTaxUsefulLifeMonths())
                 .technicalInfo(technicalInfoMapper.toResponse(fixedAsset.getTechnicalInfo()))

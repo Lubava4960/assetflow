@@ -1,7 +1,5 @@
 package ru.assetflow.service.fixedAsset;
 
-import org.springframework.transaction.annotation.Transactional;
-import ru.assetflow.db.assetfiow.entity.FixedAsset;
 import ru.assetflow.dto.fixedAsset.FixedAssetRequest;
 import ru.assetflow.dto.fixedAsset.FixedAssetResponse;
 
@@ -12,6 +10,7 @@ public interface FixedAssetService {
 
     List<FixedAssetResponse> getAllByOrderByInventoryNumberAsc();
 
-    @Transactional
     FixedAssetResponse create(FixedAssetRequest request);
+
+    FixedAssetResponse update(Long id, FixedAssetRequest request);
 }
